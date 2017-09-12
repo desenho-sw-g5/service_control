@@ -1,3 +1,7 @@
+[![codebeat badge](https://codebeat.co/badges/403ef07c-c97d-4431-a326-fa5ffd58f980)](https://codebeat.co/projects/github-com-desenho-sw-g5-service_control-master)
+
+***
+
 # Service Control Center
 
 A service module control system
