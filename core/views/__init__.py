@@ -1,0 +1,1 @@
+from .api_person_views import PersonList, PersonDetail
