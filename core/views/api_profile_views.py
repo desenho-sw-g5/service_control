@@ -6,16 +6,16 @@ from rest_framework import authentication, permissions
 
 from django.shortcuts import get_object_or_404
 
-from core.models import Person
-from core.serializers import PersonSerializer
+from core.models import Profile
+from core.serializers import ProfileSerializer
 
 
-class PersonList(APIView):
+class ProfileList(APIView):
     """
-    List people or create a new person
+    List people or create a new profile
 
-    GET /person -> list people
-    POST /person -> create a new cart person
+    GET /profile -> list profiles
+    POST /profile -> create a new profile
 
     * Requires token authentication.
     * Only admin users are able to access this view.
@@ -24,13 +24,13 @@ class PersonList(APIView):
     permission_classes = (permissions.IsAdminUser,)
 
     def get(self, request: Request) -> Response:
-        people = Person.objects.all()
-        serializer = PersonSerializer(people, many=True)
+        people = Profile.objects.all()
+        serializer = ProfileSerializer(people, many=True)
 
         return Response(serializer.data)
 
     def post(self, request: Request) -> Response:
-        serializer = PersonSerializer(data=request.data)
+        serializer = ProfileSerializer(data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -40,13 +40,13 @@ class PersonList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class PersonDetail(APIView):
+class ProfileDetail(APIView):
     """
-    Retrieve, update or delete a Person instance.
+    Retrieve, update or delete a profile instance.
 
-    GET /person/:id -> Get a person instance
-    PUT /person/:id -> Updates a person instance
-    DELETE /person/:id -> Deletes a person instance
+    GET /profile/:id -> Get a profile instance
+    PUT /profile/:id -> Updates a profile instance
+    DELETE /profile/:id -> Deletes a profile instance
 
     * Requires token authentication.
     * Only admin users are able to access this view.
@@ -55,14 +55,14 @@ class PersonDetail(APIView):
     permission_classes = (permissions.IsAdminUser,)
 
     def get(self, request: Request, pk: int) -> Response:
-        person = get_object_or_404(Person, pk=pk)
-        serializer = PersonSerializer(person)
+        profile = get_object_or_404(Profile, pk=pk)
+        serializer = ProfileSerializer(profile)
 
         return Response(serializer.data)
 
     def put(self, request: Request, pk: int) -> Response:
-        person = get_object_or_404(Person, pk=pk)
-        serializer = PersonSerializer(person, data=request.data)
+        profile = get_object_or_404(Profile, pk=pk)
+        serializer = ProfileSerializer(profile, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -72,7 +72,7 @@ class PersonDetail(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request: Request, pk: int) -> Response:
-        person = get_object_or_404(Person, pk=pk)
-        person.delete()
+        profile = get_object_or_404(Profile, pk=pk)
+        profile.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)

@@ -1,1 +1,1 @@
-from .api_person_views import PersonList, PersonDetail
+from .api_profile_views import ProfileList, ProfileDetail

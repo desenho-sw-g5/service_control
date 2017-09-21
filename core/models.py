@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Person(models.Model):
-    user = models.OneToOneField(User, related_name='person')
+class Profile(models.Model):
+    user = models.OneToOneField(User, related_name='person', on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s" % self.user.username
+        return "Profile of : %s" % self.user.username
