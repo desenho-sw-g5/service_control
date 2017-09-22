@@ -6,8 +6,6 @@ from rest_framework import authentication, permissions
 
 from django.shortcuts import get_object_or_404
 
-import logging
-
 from core.models import Profile
 from core.serializers import ProfileSerializer
 
@@ -32,7 +30,6 @@ class ProfileList(APIView):
         return Response(serializer.data)
 
     def post(self, request: Request) -> Response:
-        logging.debug("API PROFILE POST")
         serializer = ProfileSerializer(data=request.data)
 
         if serializer.is_valid():
