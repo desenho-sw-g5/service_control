@@ -17,5 +17,5 @@ source <env_name>/bin/activate
 
 Then install the requirements on the root  of the project.
 ```bash
-pip install -r requirements.txt
+pip install -r requirements/dev.txt
 ```
