@@ -26,7 +26,7 @@ urlpatterns = [
 
     url(r'core/', include('core.urls')),
 
-    url(r'profile/', include('pages.urls.profile_urls')),
+    url(r'profiles/', include('pages.urls.profile_urls')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
