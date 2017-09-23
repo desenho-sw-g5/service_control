@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^api-token-auth/', views.obtain_auth_token),
 
     url(r'core/', include('core.urls')),
+
+    url(r'profile/', include('pages.urls.profile_urls')),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
