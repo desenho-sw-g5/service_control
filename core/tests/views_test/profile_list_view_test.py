@@ -1,9 +1,8 @@
 import json
 
 from django.test import TestCase
-from django.core.urlresolvers import reverse
 
-from rest_framework.test import APIClient, APIRequestFactory
+from rest_framework.test import APIRequestFactory
 from rest_framework.test import force_authenticate
 
 from rest_framework import status
@@ -12,8 +11,6 @@ from rest_framework.authtoken.models import Token
 from core.models import Profile, User
 from core.views import ProfileList
 
-import logging
-logger = logging.getLogger('django_test')
 
 class ProfileListViewTestCase(TestCase):
     """Test suite for the api profile list view."""
