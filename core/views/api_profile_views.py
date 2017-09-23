@@ -21,7 +21,7 @@ class ProfileList(APIView):
     * Only admin users are able to access this view.
     """
     authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (permissions.IsAdminUser,)
+    permission_classes = (permissions.IsAdminUser, permissions.IsAuthenticated)
 
     def get(self, request: Request) -> Response:
         people = Profile.objects.all()
@@ -44,15 +44,15 @@ class ProfileDetail(APIView):
     """
     Retrieve, update or delete a profile instance.
 
-    GET /profile/:id -> Get a profile instance
-    PUT /profile/:id -> Updates a profile instance
-    DELETE /profile/:id -> Deletes a profile instance
+    GET /profile/:id/ -> Get a profile instance
+    PATCH /profile/:id/ -> Updates a profile instance
+    DELETE /profile/:id/ -> Deletes a profile instance
 
     * Requires token authentication.
     * Only admin users are able to access this view.
     """
     authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (permissions.IsAdminUser,)
+    permission_classes = (permissions.IsAdminUser, permissions.IsAuthenticated)
 
     def get(self, request: Request, pk: int) -> Response:
         profile = get_object_or_404(Profile, pk=pk)
@@ -60,8 +60,9 @@ class ProfileDetail(APIView):
 
         return Response(serializer.data)
 
-    def put(self, request: Request, pk: int) -> Response:
+    def patch(self, request: Request, pk: int) -> Response:
         profile = get_object_or_404(Profile, pk=pk)
+
         serializer = ProfileSerializer(profile, data=request.data)
 
         if serializer.is_valid():

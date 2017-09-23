@@ -1,0 +1,2 @@
+from .profile_list_view import ProfileListViewTestCase
+from .profile_detail_view import ProfileDetailViewTestCase
