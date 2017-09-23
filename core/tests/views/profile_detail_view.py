@@ -62,3 +62,15 @@ class ProfileDetailViewTestCase(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue('user' in response.data)
         self.assertEqual(response.data['user']['email'], new_email)
+
+    def test_delete_profile(self):
+        """Test delete profile"""
+
+        request = self.factory.delete('/core/api/profile/',
+                                    content_type='application/json')
+
+        force_authenticate(request, user=self.admin_user, token=self.admin_user.auth_token)
+        response = self.view(request, pk=self.test_profile.id)
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertFalse(Profile.objects.filter(pk=self.test_profile.id).exists())
