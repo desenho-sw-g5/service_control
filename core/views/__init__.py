@@ -1,0 +1,1 @@
+from .api_profile_views import ProfileList, ProfileDetail
