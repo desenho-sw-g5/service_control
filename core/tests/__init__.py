@@ -1,2 +1,2 @@
-from .models import *
-from .views import *
+from .models_test import *
+from .views_test import *
