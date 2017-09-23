@@ -1,6 +1,6 @@
 [![codebeat badge](https://codebeat.co/badges/403ef07c-c97d-4431-a326-fa5ffd58f980)](https://codebeat.co/projects/github-com-desenho-sw-g5-service_control-master)
-
 [![Build Status](https://travis-ci.org/desenho-sw-g5/service_control.svg?branch=master)](https://travis-ci.org/desenho-sw-g5/service_control)
+[![Coverage Status](https://coveralls.io/repos/github/desenho-sw-g5/service_control/badge.svg)](https://coveralls.io/github/desenho-sw-g5/service_control)
 
 ***
 
