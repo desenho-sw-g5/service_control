@@ -25,3 +25,9 @@ def profile_show(request: HttpRequest, pk: int) -> HttpResponse:
 
 def profile_create(request: HttpRequest) -> HttpResponse:
     return render(request, "profile/create.html", {})
+
+def profile_login(request: HttpRequest) -> HttpResponse:
+    return render(request, "profile/login.html", {})
+
+def profile_signup(request: HttpRequest) -> HttpResponse:
+    return render(request, "profile/signup.html", {})
