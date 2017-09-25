@@ -19,8 +19,8 @@ def profile_list(request: HttpRequest) -> HttpResponse:
     return render(request, "profile/list.html", context)
 
 
-def profile_show(request: HttpRequest, pk: int) -> HttpResponse:
-    profile = get_object_or_404(Profile.objects.select_related('user'), pk=pk)
+def profile_show(request: HttpRequest, profile_id: int) -> HttpResponse:
+    profile = get_object_or_404(Profile.objects.select_related('user'), pk=profile_id)
 
     context = {
         'profile' : profile
@@ -29,8 +29,8 @@ def profile_show(request: HttpRequest, pk: int) -> HttpResponse:
     return render(request, "profile/show.html", context)
 
 
-def profile_create(request: HttpRequest) -> HttpResponse:
-    return render(request, "profile/create.html", {})
+def profile_edit(request: HttpRequest, user_id: int) -> HttpResponse:
+    return render(request, "profile/edit.html", {})
 
 
 def profile_login(request: HttpRequest) -> HttpResponse:

@@ -4,25 +4,9 @@
 
 {% block "main-content" %}
 
-<style>
-    .hue-options {
-        margin: 10px;
-    }
-</style>
-
-<div class='hue-options'>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
-        Edit
-    </button>
-
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-color--red mdl-js-ripple-effect">
-        Delete
-    </button>
-</div>
-
 <hr>
 
-<h1>{{ profile.user.email }}</h1>
+<h1>Ola {{ profile.user.username }}</h1>
 
 
 {% endblock %}
