@@ -25,9 +25,10 @@ urlpatterns = [
     url(r'^$', profile_login, name='home_page'),
 
     url(r'^admin/', admin.site.urls),
+
     url(r'^api-token-auth/', views.obtain_auth_token),
 
-    url(r'core/', include('core.urls')),
+    url(r'api/', include('api.urls')),
 
     url(r'profiles/', include('pages.urls.profile_urls')),
 ]

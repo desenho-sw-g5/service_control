@@ -9,7 +9,8 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 
 from core.models import Profile, User
-from core.views import ProfileList
+
+from api.views import ProfileList
 
 
 class ProfileListViewTestCase(TestCase):

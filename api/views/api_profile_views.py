@@ -7,7 +7,7 @@ from rest_framework import authentication, permissions
 from django.shortcuts import get_object_or_404
 
 from core.models import Profile
-from core.serializers import ProfileSerializer
+from api.serializers import ProfileSerializer
 
 
 class ProfileList(APIView):

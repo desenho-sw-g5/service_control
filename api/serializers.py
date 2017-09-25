@@ -2,7 +2,7 @@ from collections import OrderedDict
 
 from rest_framework import serializers
 
-from .models import Profile, User
+from core.models import Profile, User
 
 class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(required=False)
