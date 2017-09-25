@@ -25,37 +25,35 @@
                 </div>
 
                 <div class="mdl-card__supporting-text">
-                    <form action="#">
+                    <form action="{% url "pages_profile_register" %}" method="POST">
+                        {% csrf_token %}
+
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" id="username" />
+                            <input class="mdl-textfield__input" type="text" id="username" name="username" />
                             <label class="mdl-textfield__label" for="username">Username</label>
+
+                            {% if username_errors %}
+                                {% include './_list_errors.html' with errors=username_errors %}
+                            {% endif %}
                         </div>
 
                         <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="password" id="password" />
+                            <input class="mdl-textfield__input" type="password" id="password" name="password" />
                             <label class="mdl-textfield__label" for="userpass">Password</label>
+
+                            {% if username_errors %}
+                                {% include './_list_errors.html' with errors=password_errors %}
+                            {% endif %}
                         </div>
 
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="password" id="password_confirm" />
-                            <label class="mdl-textfield__label" for="password_confirm">Password Confirm</label>
-                        </div>
+                        <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                            Register
+                        </button>
 
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="email" id="email" />
-                             <label class="mdl-textfield__label" for="email">E-mail</label>
-                        </div>
+                        <a href="{% url "pages_profile_login" %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                            Cancel
+                        </a>
                     </form>
-                </div>
-
-                <div class="mdl-card__actions mdl-card--border">
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
-                        Register
-                    </button>
-
-                    <a href="{% url "pages_profile_login" %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
-                        Cancel
-                    </a>
                 </div>
             </div>
         </main>
