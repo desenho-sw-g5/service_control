@@ -19,8 +19,11 @@ from django.contrib import admin
 from rest_framework.authtoken import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
+from pages.views import profile_login
 
 urlpatterns = [
+    url(r'^$', profile_login, name='home_page'),
+
     url(r'^admin/', admin.site.urls),
     url(r'^api-token-auth/', views.obtain_auth_token),
 
