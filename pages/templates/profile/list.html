@@ -14,7 +14,7 @@
                 </i>
 
                 <span>
-                    <a href="{% url 'pages_profile_show' profile.id %}">
+                    <a href="{% url 'pages_profile_show' profile.user.id %}">
                         {{profile.user.first_name}}
                     </a>
                 </span>

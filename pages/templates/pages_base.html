@@ -49,7 +49,15 @@
                         </li>
 
                         <li class="mdl-menu__item">
-                            <a href="{% url "pages_profile_logout" %}">Log out</a>
+                            <a href="{% url "pages_profile_show" request.user.profile.id %}">
+                                My profile page
+                            </a>
+                        </li>
+
+                        <li class="mdl-menu__item">
+                            <a href="{% url "pages_profile_logout" %}">
+                                Log out
+                            </a>
                         </li>
                     </ul>
                 </div>
