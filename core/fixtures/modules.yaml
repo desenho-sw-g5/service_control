@@ -1,0 +1,4 @@
+- model: core.module
+  pk: 1
+  fields:
+    name: MY_PROFILE
