@@ -9,8 +9,9 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 
 from core.models import Profile, User
-from core.views import ProfileDetail
-from core.serializers import UserSerializer
+
+from api.views import ProfileDetail
+from api.serializers import UserSerializer
 
 
 class ProfileDetailViewTestCase(TestCase):

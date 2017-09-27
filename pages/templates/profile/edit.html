@@ -1,0 +1,57 @@
+{% extends "../pages_base.html" %}
+
+{% block "header-title" %} Edit profile {% endblock %}
+
+{% block "main-content" %}
+
+<form action="{% url "pages_profile_update" user.id %}" method="POST">
+    {% csrf_token %}
+
+    <div class="mdl-grid">
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-cell mdl-cell--4-col">
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="first_name" name="first_name" value="{{user.first_name}}">
+                <label class="mdl-textfield__label" for="sample3">First name</label>
+            </div>
+
+            <br>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="last_name" name="last_name" value="{{user.last_name}}">
+                <label class="mdl-textfield__label" for="sample3">Last name</label>
+            </div>
+
+            <br>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="email" id="email" name="email" value="{{user.email}}">
+                <label class="mdl-textfield__label" for="sample3">E-mail</label>
+            </div>
+
+            <br>
+
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="password" id="password" name="password" />
+                <label class="mdl-textfield__label" for="password">Password</label>
+            </div>
+
+            <br>
+
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                Save
+            </button>
+
+            <a href="{% url "pages_profile_show" request.user.profile.id %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-button--accent">
+                Cancel
+            </a>
+        </div>
+        <div class="mdl-layout-spacer"></div>
+    </div>
+
+
+
+</form>
+
+{% endblock %}

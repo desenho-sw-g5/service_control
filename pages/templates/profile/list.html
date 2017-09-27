@@ -1,0 +1,32 @@
+{% extends "../pages_base.html" %}
+
+{% block "header-title" %} Usuários {% endblock %}
+
+{% block "main-content" %}
+
+
+<ul class="demo-list-two mdl-list">
+    {% for profile in profiles %}
+        <li class="mdl-list__item mdl-list__item--two-line">
+            <span class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-avatar">
+                    person
+                </i>
+
+                <span>
+                    <a href="{% url 'pages_profile_show' profile.user.id %}">
+                        {{profile.user.first_name}}
+                    </a>
+                </span>
+
+                <span class="mdl-list__item-sub-title">
+                    Admin
+                </span>
+            </span>
+
+        </li>
+
+    {% endfor %}
+</ul>
+
+{% endblock %}
