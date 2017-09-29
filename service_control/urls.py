@@ -19,6 +19,15 @@ from django.contrib import admin
 from rest_framework.authtoken import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
+from decorator_include import decorator_include
+
+from core.views_verifications import (
+    ViewsVerificationsDecorator,
+    LoginRequiredVerification,
+    ModuleAccessVerification)
+
+from core.enums import ModuleEnum
+
 from pages.views import profile_login
 
 urlpatterns = [
@@ -30,7 +39,17 @@ urlpatterns = [
 
     url(r'api/', include('api.urls')),
 
-    url(r'profiles/', include('pages.urls.profile_urls')),
+    url(r'profiles/',
+        decorator_include(
+            ViewsVerificationsDecorator(
+                module=ModuleEnum.MY_PROFILE,
+                verifications=(
+                    LoginRequiredVerification(), LoginRequiredVerification()),
+                unless=('pages_profile_login', 'pages_profile_signup', 'pages_profile_register')
+            ),
+            'pages.urls.profile_urls'
+        )
+    ),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

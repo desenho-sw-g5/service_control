@@ -20,6 +20,4 @@ class Profile(models.Model):
     modules = models.ManyToManyField(Module, related_name='profiles', blank=True)
 
     def __str__(self):
-        print(self.role)
-
         return "%s: %s" % (self.role, self.user.username)
