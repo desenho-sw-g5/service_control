@@ -8,6 +8,9 @@ from rest_framework.authtoken.models import Token
 
 from core.models import Profile, User
 
+import logging
+
+logger = logging.getLogger('django_test')
 
 def profile_list(request: HttpRequest) -> HttpResponse:
     profiles = Profile.objects.select_related('user').all()
@@ -90,17 +93,23 @@ def profile_update(request: HttpRequest, user_id: int) -> HttpResponse:
 
 def profile_login(request: HttpRequest) -> HttpResponse:
     if not request.user.is_anonymous():
+        logger.debug("PROFILE VIEWS -> login, user is authenticated redirecting to profile list")
         return redirect("pages_profile_list")
 
     if request.method == "POST":
+        logger.debug("PROFILE VIEWS -> login, method POST, loggin user")
         username = request.POST['username']
         password = request.POST['password']
 
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
+            logger.debug("PROFILE VIEWS -> login, user success logged, redirecting to profile list")
             login(request, user)
             return redirect("pages_profile_list")
+        else:
+            logger.debug("PROFILE VIEWS -> login, could not authenticate user\nusername: {}\npassword: {}".format(username, password))
+            logout(request)
 
     return render(request, "profile/login.html", {})
 
@@ -125,7 +134,8 @@ def profile_register(request: HttpRequest) -> HttpResponse:
     }
 
     try:
-        user = User(**user_data)
+        user = User(username=user_data['username'])
+        user.set_password(user_data['password'])
         user.full_clean()
         user.save()
 

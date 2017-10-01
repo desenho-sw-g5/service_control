@@ -14,3 +14,5 @@ pytz==2017.2
 six==1.10.0
 wrapt==1.10.11
 Jinja2==2.9.6
+PyYAML==3.12
+django-decorator-include==1.3
