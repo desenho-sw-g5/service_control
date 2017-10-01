@@ -49,19 +49,27 @@ class ModuleAccessVerification(ViewVerification):
         user = request.user
 
         if user.is_anonymous():
+            logger.debug("VERIFICATIONS -> User is ANONYMOUS, access denied")
             return False
 
         profile = user.profile
         module = request.__getattribute__('module')
+        user_has_module = profile.modules.filter(name=module.name).exists()
 
-        return profile.modules.filter(name=module.name).exists()
+        logger.debug("VERIFICATIONS -> User {} has module ? {}".format(user.username, user_has_module))
+
+        return user_has_module
 
 
 # Composite Leaf
 class LoginRequiredVerification(ViewVerification):
 
     def verify(self, request: HttpRequest) -> bool:
-        return request.user.is_authenticated()
+        authenticated = request.user.is_authenticated()
+
+        logger.debug("VERIFICATIONS -> Is user AUTHENTICADED ? {}".format(authenticated))
+
+        return authenticated
 
 
 # Django URL Decorator
@@ -107,19 +115,19 @@ class ViewsVerificationsDecorator(object):
 
             if current_url in self._unless:
                 logger.debug(
-                    "URL Verifications: {} in unless, skip validations" \
+                    "VERIFICATIONS -> URL Verifications: {} in unless, skip validations" \
                     .format(current_url))
 
                 return view(*args, **kwargs)
             elif verificator.verify(request):
                 logger.debug(
-                    "URL Verifications: User has access to {}, sending view" \
+                    "VERIFICATIONS -> URL Verifications: User has access to {}, sending view" \
                     .format(current_url))
 
                 return view(*args, **kwargs)
             else:
                 logger.debug(
-                    "URL Verifications: User DONT has access to {}, sending 404 view" \
+                    "VERIFICATIONS -> URL Verifications: User DONT has access to {}, sending 404 view" \
                     .format(current_url))
 
                 raise Http404("Could access the page")
