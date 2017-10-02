@@ -44,7 +44,7 @@ urlpatterns = [
             ViewsVerificationsDecorator(
                 module=ModuleEnum.MY_PROFILE,
                 verifications=(
-                    LoginRequiredVerification(), LoginRequiredVerification()),
+                    LoginRequiredVerification(), ModuleAccessVerification()),
                 unless=('pages_profile_login', 'pages_profile_signup', 'pages_profile_register')
             ),
             'pages.urls.profile_urls'
