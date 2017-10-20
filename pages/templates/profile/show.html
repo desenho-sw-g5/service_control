@@ -1,12 +1,14 @@
 {% extends "../pages_base.html" %}
 
-{% block "header-title" %} {{ profile.user.username }} {% endblock %}
+{% block "header-title" %} {{ profile.user.username.capitalize }}'s profile {% endblock %}
 
 {% block "main-content" %}
 
 <hr>
-
-<h1>Ola {{ profile.user.username }}</h1>
-
+<div class="card" >
+  <h2>Hello, {{ profile.user.username }}</h2>
+  <h4><b>First Name:</b> {{ profile.user.first_name }}</h4>
+  <h4><b>Last Name:</b> {{ profile.user.last_name }}</h4>
+</div>
 
 {% endblock %}
