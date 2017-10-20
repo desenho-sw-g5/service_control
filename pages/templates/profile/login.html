@@ -14,10 +14,13 @@
         padding: 24px;
         flex: none;
     }
+    .bigger:hover {
+        transform: scale(1.07);
+    }
 </style>
 
-<div>
-    <div class="mdl-layout mdl-js-layout mdl-color--grey-100">
+<div class="">
+    <div class="mdl-layout mdl-js-layout mdl-color--grey-100 background">
         <main class="mdl-layout__content">
             <div class="mdl-card mdl-shadow--6dp">
                 <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
@@ -37,11 +40,11 @@
                             <label class="mdl-textfield__label" for="password">Password</label>
                         </div>
 
-                        <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                        <button type="submit" class="mdl-button mdl-button--colored mdl-js-button mdl-button--raised mdl-js-ripple-effect bigger">
                             Log in
                         </button>
 
-                        <a href="{% url "pages_profile_signup" %}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-button--accent">
+                        <a href="{% url "pages_profile_signup" %}" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect mdl-button--accent bigger">
                             Sign up
                         </a>
                     </form>
