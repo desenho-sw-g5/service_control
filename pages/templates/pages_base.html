@@ -43,19 +43,19 @@
                         </button>
                     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
                         <li class="mdl-menu__item">
-                            <a href="{% url "pages_profile_edit" request.user.id %}">
+                            <a href="{% url "pages_profile_edit" request.user.id %}" class="beauty-text">
                                 Edit profile data
                             </a>
                         </li>
 
                         <li class="mdl-menu__item">
-                            <a href="{% url "pages_profile_show" request.user.profile.id %}">
+                            <a href="{% url "pages_profile_show" request.user.profile.id %}" class="beauty-text">
                                 My profile page
                             </a>
                         </li>
 
                         <li class="mdl-menu__item">
-                            <a href="{% url "pages_profile_logout" %}">
+                            <a href="{% url "pages_profile_logout" %}" class="beauty-text">
                                 Log out
                             </a>
                         </li>
