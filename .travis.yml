@@ -12,7 +12,7 @@ install:
   - pip install coverage coveralls
 
 script:
-  - coverage run --source='./Trabalho_1/' manage.py test
+  - coverage run --source='.' Trabalho_1/manage.py test
 
 after_success:
   - coveralls
